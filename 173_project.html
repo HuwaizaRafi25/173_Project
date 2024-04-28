@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>173 Project</title>
+    <link rel="icon" href="src/bobo.jpg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        background-color: #7762e8;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+      }
+
+      .container {
+        color: #fff;
+        text-align: center;
+      }
+
+      h1 {
+        font-weight: 600;
+        font-size: 62px;
+      }
+
+      h3 {
+        margin-top: 1em;
+        font-weight: 500;
+        text-decoration: underline;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      h3:hover {
+        color: #e9e9e9;
+        transition: 1s;
+      }
+
+      li {
+        display: inline-block;
+        font-size: 24px;
+        list-style-type: none;
+        padding: 1em;
+        text-transform: uppercase;
+        
+      }
+
+      li span {
+        display: block;
+        font-size: 62px;
+        font-weight: 600;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+      }
+      button {
+        font-size: 18px;
+        font-weight: 600;
+        color: #7762e8;
+        padding: 14px 22px;
+        border: none;
+        background: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 164px;
+        transition: 0.5s ease;
+      }
+      button:hover {
+        background-color: #7762e8;
+        border: 3px solid #fff;
+        color: #fff;
+        transition: 0.5s ease;
+      }
+      button.show-modal,
+      .modal-box {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      section.active .show-modal {
+        display: none;
+      }
+      .overlay {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+      section.active .overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 380px;
+        width: 100%;
+        padding: 30px 20px;
+        border-radius: 24px;
+        background-color: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+      section.active .modal-box {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      .modal-box i {
+        font-size: 70px;
+        color: #4070f4;
+      }
+      .modal-box h2 {
+        margin-top: 20px;
+        font-size: 25px;
+        font-weight: 600;
+        color: #333;
+      }
+      .modal-box h3 {
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+        text-align: center;
+        text-decoration: none;
+      }
+      .modal-box .buttons {
+        margin-top: 25px;
+      }
+      .modal-box button {
+        font-size: 14px;
+        padding: 6px 12px;
+        margin: 0 10px;
+        background-color: #7762e8;
+        color: #fff;
+        width: 96px;
+        height: 32px;
+      }
+      .modal-box button:hover {
+        background-color: #fff;
+        color: #7762e8;
+        border: 3px solid #7762e8;
+        transition: 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @media (max-width: 768px) {
+        li{
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>COUNTDOWN 173 PROJECT</h1>
+      <ul>
+        <li><span id="days">0</span>days</li>
+        <li><span id="hours">0</span>Hours</li>
+        <li><span id="minutes">0</span>Minutes</li>
+        <li><span id="seconds">0</span>Seconds</li>
+      </ul>
+    </div>
+    <section>
+      <button class="show-modal">WHAT'S NEXT?</button>
+      <span class="overlay"></span>
+      <div class="modal-box">
+        <img src="src/bobo.jpg" style="width: 124px; border-radius: 5%; filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.3));"></img>
+        <h2>HIBERNATION</h2>
+        <h3>IT TAKES TIME TO HAVE HIBERNATION, BYE!</h3>
+        <div class="buttons">
+          <button class="close-btn">BYE!</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      const section = document.querySelector("section"),
+        overlay = document.querySelector(".overlay"),
+        showBtn = document.querySelector(".show-modal"),
+        closeBtn = document.querySelector(".close-btn");
+      showBtn.addEventListener("click", () => section.classList.add("active"));
+      overlay.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+      closeBtn.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/173_project.min.js"></script>
+    <script>
+      var daysElement = document.querySelector("#days");
+      var hoursElement = document.querySelector("#hours");
+      var minutesElement = document.querySelector("#minutes");
+      var secondsElement = document.querySelector("#seconds");
+      var containerElement = document.querySelector(".container");
+      var endDate = "2024/10/19";
+
+      var myCountDown = new ysCountDown(endDate, function (
+        remaining,
+        finished
+      ) {
+        if (finished) {
+          containerElement.textContent = "BISMILLAH, HELLO!";
+          containerElement.style.fontWeight = "bold";
+          containerElement.style.fontSize = "32px";
+        }
+
+        daysElement.textContent = remaining.totalDays;
+        hoursElement.textContent = remaining.hours;
+        minutesElement.textContent = remaining.minutes;
+        secondsElement.textContent = remaining.seconds;
+      });
+    </script>
+  </body>
+</html>
