@@ -1,5 +1,5 @@
 {
     "rewrites":[
-        {"source":"/(.*)","/173_project.html":"/"}
+        {"src":"/(.*)","dest":"/173_project.html":"/"}
     ]
 }
