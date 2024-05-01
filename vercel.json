@@ -1,5 +1,5 @@
 {
-    "rewrites":[
-        {"src":"/(.*)","dest":"/173_project.html":"/"}
-    ]
+  "routes": [
+    { "src": "/(.*)", "dest": "/173_project.html" }
+  ]
 }
