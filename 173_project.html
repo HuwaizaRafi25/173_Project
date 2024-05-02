@@ -107,6 +107,19 @@
         transform: translate(-50%, -50%);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       }
+      button.show-modal2{
+        position:fixed;
+        margin-top: 420px;
+        background-color: #7762e8;
+        border: 3px solid #fff;
+        color: #fff;
+        transition: 0.5s ease;
+      }
+      button.show-modal2:hover {
+        background-color: #fff;
+        color: #7762e8;
+        transition: 0.5s ease;
+      }
       section.active .show-modal {
         display: none;
       }
@@ -214,6 +227,8 @@
         </div>
       </div>
     </section>
+    <button onclick="goToPage()" class="show-modal2">WHAT'S NEW?</button>
+
     <script>
       const section = document.querySelector("section"),
         overlay = document.querySelector(".overlay"),
@@ -252,6 +267,11 @@
         minutesElement.textContent = remaining.minutes;
         secondsElement.textContent = remaining.seconds;
       });
+    </script>
+    <script>
+      function goToPage() {
+        window.location.href = "respons.html";
+      }
     </script>
   </body>
 </html>
